@@ -34,11 +34,11 @@ function makeButtons() {
 
 $(document).on("click", ".btn-click", displayGifs);
 
-
+/* This  uses Ajax to pull  the Gifs */ 
 function displayGifs() {
 
   let input = $(this).val();
-  let api = "&api_key=dy0FmMLlA7vphv8GPrWfz8W18KNS9npL"
+  let api = "&api_key=dy0FmMLlA7vphv8GPrWfz8W18KNS9npL&limit=10"
   let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + "dancing " + input + api;
 
 
@@ -47,48 +47,24 @@ function displayGifs() {
     method: "GET"
   }).done(function (response) {
 
-    let results = response.data;
+ item = response.data;
 
    
    pulled.empty();
     for (var i = 0; i < 10; i++) {
  
-       if (results[i].rating === "g") {
-        // Generating div with class "item"
-        var gifyDiv = $("<div class='item'>");
-
-        //Generating a div to hold the giphys
-        var gifyDiv = $("<div>");
-
-        //Storing rating response
-        var rating = response.data.rating;
-
-        //Fetching URL for image
-        var imgURL = response.rating;
-
-        //Generating <p> and rating
-        var p = $("<p>").text("Rating: " + results[i].rating);
-
-        //Generating image tag
-        var gify = $("<img>");
-
-        //Defining src attribute of the images pulled
-        gify.attr("src", results[i].images.fixed_height.url);
-
-        //Appending rating to giphy
-        gifyDiv.append(p);
-        gifyDiv.append(gify);
-
-        //Setting src and URL attributes to giphy
-        var image = $("<img>").attr("src", imgURL);
-        $("<img>").addClass("card-img-top");
-        
-
-        //Appending the giphy
-        gifyDiv.append(image);
-
-        //Prepending new giphys above previosly called giphys
-        pulled.append(gifyDiv);
+       if (item[i].rating === "g" || item[i].rating === "G" || item[i].rating === "pg" || item[i].rating === "PG") {
+         itemDiv = $("<div>");
+        rating = response.data.rating;  
+        imgURL = response.rating; 
+       heading = $("<h6>").text("Rating: " + item[i].rating);
+        image = $("<img>"); 
+        image.attr("src", item[i].images.fixed_height.url);
+        itemDiv.append(image);
+        itemDiv.append(heading); 
+        image.attr("src", imgURL);
+        itemDiv.append(image);  
+        pulled.append(itemDiv);
        }
     };
   });
@@ -96,21 +72,12 @@ function displayGifs() {
 
 
 
-//On.click function; prevents duplicatation of initial buttons
-$("#add-gify").on("click", function (event) {
+
+$("#submit").on("click", function (event) {
   event.preventDefault();
-
-  //Stores user input from the textbox
-  var gify = $("#gify-input").val().trim();
-
-  //Removes previous giphys on.click
-  $("gif").empty();
-
-  //Adds Users input from the textbox to array
-  gifys.push(gify);
-
-  //Calls renderButtons function for User input buttons
-  renderButtons();
+  var newInput = $("#form-input").val().trim();
+  dancingthings.push(newInput);
+  makeButtons();
 });
 
 
