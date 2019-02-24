@@ -1,34 +1,59 @@
+$( document ).ready(function() {
+
+// Sets up initial array for button population 
 
 const pulled = $("#pulled-container");
+const buttons = $("#button-row");
+
 
 //Setting Initial Array Values
-var gifys = ["puppies", "owls", "babies"];
+let dancingthings = ["puppies", "owls", "babies"];
 
-function displayGifInfo() {
+/* This first empties out the button row using empty() and then uses a for loop to create a button */
+/* Moved newButton var inside loop to create multiple buttons */
 
-  //Global vars
-  var gify = $(this).attr("data-name");
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + "dancing " + gify + "&api_key=dy0FmMLlA7vphv8GPrWfz8W18KNS9npL";
+function makeButtons() {
 
-  //AJAX `Get` to Giphy API
+   buttons.empty();
+  
+    for (var i = 0; i < dancingthings.length; i++) {
+
+     const newButton = $("<button>");
+      
+      newButton.addClass("btn-click");
+      
+      newButton.attr("value", dancingthings[i]);
+      
+      newButton.text(dancingthings[i]);
+      
+      buttons.append(newButton);
+    };
+  };
+
+/* This makes the buttons clickable */
+
+$(document).on("click", ".btn-click", displayGifs);
+
+
+function displayGifs() {
+
+  let input = $(this).val();
+  let api = "&api_key=dy0FmMLlA7vphv8GPrWfz8W18KNS9npL"
+  let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + "dancing " + input + api;
+
+
   $.ajax({
     url: queryURL,
     method: "GET"
   }).done(function (response) {
 
-    //console logs
-    console.log(queryURL);
-    console.log(response);
+    let results = response.data;
 
-    //var assignments
-    var gifyDiv = $("<div class='gify'>");
-    var results = response.data;
-
-    //Clears out previous giphy set before adding a new set
+   
    pulled.empty();
     for (var i = 0; i < 10; i++) {
-
-
+ 
+       if (results[i].rating === "g") {
         // Generating div with class "item"
         var gifyDiv = $("<div class='item'>");
 
@@ -64,32 +89,12 @@ function displayGifInfo() {
 
         //Prepending new giphys above previosly called giphys
         pulled.append(gifyDiv);
-     
+       }
     };
   });
 };
 
-//Calling renderButtons function
-function renderButtons() {
 
-  //Prevents repeated buttons -- Do not remove.
-  $("#buttons-view").empty();
-
-  //For Loop
-  for (var i = 0; i < gifys.length; i++) {
-
-    //Generating buttons
-    var a = $("<button>");
-    //Adding class of gify
-    a.addClass("gify");
-    //Adding data-attribute
-    a.attr("data-name", gifys[i]);
-    //Adding button text
-    a.text(gifys[i]);
-    //Appending the button to HTML
-    $("#buttons-view").append(a);
-  };
-};
 
 //On.click function; prevents duplicatation of initial buttons
 $("#add-gify").on("click", function (event) {
@@ -108,8 +113,10 @@ $("#add-gify").on("click", function (event) {
   renderButtons();
 });
 
-//Adds a click event listener to elements with a class of "gify"
-$(document).on("click", ".gify", displayGifInfo);
 
-//Calls the renderButtons function for the intial buttons as defined in the array
-renderButtons();
+
+
+makeButtons();
+
+
+}); // Document ready end bracket
