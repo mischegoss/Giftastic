@@ -2,13 +2,13 @@
 
 
 //Setting Initial Array Values
-var gifys = ["Donald Trump", "Sarah Sanders", "Kellyanne Conway"];
+var gifys = ["puppies", "owls", "babies"];
 
-function displayGifInfo(gifName) {
+function displayGifInfo() {
 
   //Global vars
   var gify = $(this).attr("data-name");
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gify + "&api_key=dy0FmMLlA7vphv8GPrWfz8W18KNS9npL";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + "dancing " + gify + "&api_key=dy0FmMLlA7vphv8GPrWfz8W18KNS9npL";
 
   //AJAX `Get` to Giphy API
   $.ajax({
@@ -26,10 +26,8 @@ function displayGifInfo(gifName) {
 
     //Clears out previous giphy set before adding a new set
     $("#gify-view").empty();
-    for (var i = 0; i < gifys.length; i++) {
+    for (var i = 0; i < 10; i++) {
 
-      //Filtering for an appropriate rating (PG-13 and under)
-      if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
 
         // Generating div with class "item"
         var gifyDiv = $("<div class='item'>");
@@ -58,13 +56,15 @@ function displayGifInfo(gifName) {
 
         //Setting src and URL attributes to giphy
         var image = $("<img>").attr("src", imgURL);
+        $("<img>").addClass("card-img-top");
+        
 
         //Appending the giphy
         gifyDiv.append(image);
 
         //Prepending new giphys above previosly called giphys
         $("#gify-view").prepend(gifyDiv);
-      };
+     
     };
   });
 };
