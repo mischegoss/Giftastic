@@ -1,5 +1,5 @@
 
-
+const pulled = $("#pulled-container");
 
 //Setting Initial Array Values
 var gifys = ["puppies", "owls", "babies"];
@@ -25,7 +25,7 @@ function displayGifInfo() {
     var results = response.data;
 
     //Clears out previous giphy set before adding a new set
-    $("#gify-view").empty();
+   pulled.empty();
     for (var i = 0; i < 10; i++) {
 
 
@@ -63,7 +63,7 @@ function displayGifInfo() {
         gifyDiv.append(image);
 
         //Prepending new giphys above previosly called giphys
-        $("#gify-view").prepend(gifyDiv);
+        pulled.append(gifyDiv);
      
     };
   });
