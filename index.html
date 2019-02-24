@@ -13,8 +13,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
       crossorigin="anonymous">
-
-
     <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
     
   </head>
@@ -24,24 +22,24 @@
   
     <h1 class="text-center">Dance-o-Matic</h1>
     <h4 class="text-center">Click on a button to watch things dance</h4>
-  <div class ="row text-center">
+
+<!--Buttons-->
+    <div class ="text-center">
     <div id="button-row"></div>
 </div>
-  <div class ="row text-center">
-    <form id="gify-form">
-      <label form="gify-input">Or make a new button below</label>
-      <br>
-      <input type="text" id="form-input" size="25">
-      <br>
-  
-      <input id="submit" type="submit" value="Submit">
-    </form>
+
+<form>
+  <div class="form-group">
+    <label for="form-input">Or make a new button below</label>
+    <input type="text" id="form-input" size="25"  placeholder ="Enter search item here">
+    <small id="emailHelp" class="form-text text-muted">Click on your new button  to see the results.</small>
   </div>
+  <button type="submit" id="submit">Submit</button>
+</form>
 
 
 
-
-
+<!--This is the container for the pulled  GIFs-->
 
   <div class ="flex-container" id="pulled-container"></div>
 
