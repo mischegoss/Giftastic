@@ -56,3 +56,7 @@ body {
 #bottom-link {
   color:  #41354D;
 }
+
+.animate {
+  max-width: 70vw;
+}

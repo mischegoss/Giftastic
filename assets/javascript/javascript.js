@@ -74,6 +74,7 @@ $( document ).ready(function() {
 					image.attr('data-state', 'still');	
           image.attr('data-animate', movingimage);
           image.addClass("animate");
+          image.addClass("img-fluid");
 
   // Creates rating on page     
           rating = item[i].rating;
