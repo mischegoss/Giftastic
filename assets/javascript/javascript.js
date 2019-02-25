@@ -1,3 +1,6 @@
+
+/* This is the basic JS skeleton. I still  need to clear the form field after click and clean up JS */ 
+
 $( document ).ready(function() {
 
   // Sets up initial array for button population 
@@ -76,7 +79,7 @@ $( document ).ready(function() {
     var newInput = $("#form-input").val().trim();
     dancingthings.push(newInput);
     makeButtons();
-    $("#form-input").empty();
+   
   });
   
   
