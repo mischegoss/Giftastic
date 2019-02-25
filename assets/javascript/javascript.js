@@ -39,6 +39,8 @@ $( document ).ready(function() {
   
   /* This  uses Ajax to pull the Gifs */ 
   function displayGifs() {
+
+    pulled.removeClass("hide");
   
   // This puts together the query URL used in AJAX
     let input = $(this).val();
