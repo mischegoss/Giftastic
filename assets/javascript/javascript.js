@@ -1,6 +1,4 @@
 
-/* Still need to clean up 
- * Some classes are unused because styling has not yet been applied*/
 
 $( document ).ready(function() {
 
@@ -41,11 +39,12 @@ $( document ).ready(function() {
   /* This  uses Ajax to pull the Gifs */ 
   function displayGifs() {
   
+  // This puts together the query URL used in AJAX
     let input = $(this).val();
     let api = "&api_key=dy0FmMLlA7vphv8GPrWfz8W18KNS9npL&limit=" + limit
     let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + "dancing " + input + api;
   
-  
+  //The AJAX call
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -55,10 +54,12 @@ $( document ).ready(function() {
  
      pulled.empty();
       for (var i = 0; i < limit; i++) {
-   
+  // This  prevent R Rated Gifs 
          if (item[i].rating === "g" || item[i].rating === "pg" ) {
+   
+  // Creates New Div
           newItem = $("<div>");
-           
+ // Creates Image           
           stillimage = item[i].images.fixed_height_still.url;
           movingimage = item[i].images.fixed_height.url;
           rating = item[i].rating;
@@ -68,23 +69,24 @@ $( document ).ready(function() {
           image.attr('data-still', stillimage);
 					image.attr('data-state', 'still');	
           image.attr('data-animate', movingimage);
-          
-          heading = $("<div>").text("Rating: " + rating);
-          heading.addClass("heading")
-           
-          newItem.append(image);
-          newItem.append(heading);
-          newItem.addClass("new-item")
-
-        
           image.addClass("animate");
-          newItem.append(image);  
+
+  // Creates rating on page     
+          rating = item[i].rating;
+          heading = $("<div>").text("Rating: " + rating);
+          
+  // Appends image and rating to new Item and newItem to hardcoded div         
+          newItem.append(image);
+          newItem.append(heading);  
           pulled.append(newItem);
          }
       };
     });
   };
 
+ /* I tried to use '$(".animate") but it didn't work. I found the 
+  * document soluation via Google */
+ 
   $(document).on('click', '.animate', function(){
     datastate = $(this).attr('data-state');
 
@@ -102,7 +104,8 @@ $( document ).ready(function() {
 
   });
   
- 
+ /* This is submit click event. No click if less than 3 letters entered to
+  * prevent  'bad' submits. */
   $("#submit").on("click", function (event) {
     event.preventDefault();
     var newInput = $("#form-input").val().trim();
@@ -114,7 +117,7 @@ $( document ).ready(function() {
     }
   });
   
-  
+  /* Calls MakeButton function to make initial buttons on load */
   makeButtons();
   
   
