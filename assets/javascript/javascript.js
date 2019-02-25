@@ -9,7 +9,7 @@ $( document ).ready(function() {
   let limit = 10;
   
   //Setting Initial Array Values
-  let dancingthings = ["puppies", "owls", "babies"];
+  let dancingthings = ["puppies", "owls", "babies", "old people"];
   
   /* This first empties out the button row using empty() and then uses a for loop to create a button */
   /* Moved newButton var inside loop to create multiple buttons */
@@ -23,6 +23,7 @@ $( document ).ready(function() {
        const newButton = $("<button>");
         
         newButton.addClass("btn-click");
+        newButton.addClass("top-button");
         
         newButton.attr("value", dancingthings[i]);
         
@@ -59,6 +60,7 @@ $( document ).ready(function() {
    
   // Creates New Div
           newItem = $("<div>");
+          newItem.addClass("new-item");
  // Creates Image           
           stillimage = item[i].images.fixed_height_still.url;
           movingimage = item[i].images.fixed_height.url;
@@ -86,7 +88,7 @@ $( document ).ready(function() {
 
  /* I tried to use '$(".animate") but it didn't work. I found the 
   * document soluation via Google */
- 
+
   $(document).on('click', '.animate', function(){
     datastate = $(this).attr('data-state');
 

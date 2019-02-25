@@ -1,6 +1,12 @@
 /*TO DO: Style project */ 
 
-
+* {
+  color: #41354D;
+  
+}
+body {
+  background-image: url(../images/retro2.jpg);
+}
 .flex-container {
   display: flex;
   justify-content: center;
@@ -11,5 +17,25 @@
   
 }
 
+.new-item {
+  background-color: #DE7E44;
+  border: 5px solid #DE7E44;
+  margin-bottom: 2em;
+  margin-right: 1em;
+}
 
+.top-button {
+  background-color: #5d9b84;
+  padding: 1em;
+}
+
+#form-input {
+  background-color: beige;
+}
+
+.top {
+  background: rgba(93, 155, 132, .15);
+  padding: 2em;
+  
+}
 
