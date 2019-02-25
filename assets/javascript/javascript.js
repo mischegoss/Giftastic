@@ -54,23 +54,21 @@ function displayGifs() {
     for (var i = 0; i < 10; i++) {
  
        if (item[i].rating === "g" || item[i].rating === "G" || item[i].rating === "pg" || item[i].rating === "PG") {
-         itemDiv = $("<div>");
+        newItem = $("<div>");
         rating = response.data.rating;  
         imgURL = response.rating; 
-       heading = $("<h6>").text("Rating: " + item[i].rating);
+        heading = $("<h6>").text("Rating: " + item[i].rating);
         image = $("<img>"); 
         image.attr("src", item[i].images.fixed_height.url);
-        itemDiv.append(image);
-        itemDiv.append(heading); 
+        newItem.append(image);
+        newItem.append(heading); 
         image.attr("src", imgURL);
-        itemDiv.append(image);  
-        pulled.append(itemDiv);
+        newItem.append(image);  
+        pulled.append(newItem);
        }
     };
   });
 };
-
-
 
 
 $("#submit").on("click", function (event) {
@@ -79,8 +77,6 @@ $("#submit").on("click", function (event) {
   dancingthings.push(newInput);
   makeButtons();
 });
-
-
 
 
 makeButtons();
