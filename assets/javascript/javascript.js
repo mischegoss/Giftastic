@@ -1,5 +1,6 @@
 
-/* This is the basic JS skeleton. I still  need to clear the form field after click and clean up JS */ 
+/* Still need to clean up 
+ * Some classes are unused because styling has not yet been applied*/
 
 $( document ).ready(function() {
 
@@ -7,7 +8,7 @@ $( document ).ready(function() {
   
   const pulled = $("#pulled-container");
   const buttons = $("#button-row");
-  
+  let limit = 10;
   
   //Setting Initial Array Values
   let dancingthings = ["puppies", "owls", "babies"];
@@ -33,15 +34,15 @@ $( document ).ready(function() {
       };
     };
   
-  /* This makes the buttons clickable */
+  /* This makes the buttons clickable and calls displayGifs */
   
   $(document).on("click", ".btn-click", displayGifs);
   
-  /* This  uses Ajax to pull  the Gifs */ 
+  /* This  uses Ajax to pull the Gifs */ 
   function displayGifs() {
   
     let input = $(this).val();
-    let api = "&api_key=dy0FmMLlA7vphv8GPrWfz8W18KNS9npL&limit=10"
+    let api = "&api_key=dy0FmMLlA7vphv8GPrWfz8W18KNS9npL&limit=" + limit
     let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + "dancing " + input + api;
   
   
@@ -51,35 +52,66 @@ $( document ).ready(function() {
     }).done(function (response) {
   
    item = response.data;
-  
-     
+ 
      pulled.empty();
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < limit; i++) {
    
-         if (item[i].rating === "g" || item[i].rating === "G" || item[i].rating === "pg" || item[i].rating === "PG") {
+         if (item[i].rating === "g" || item[i].rating === "pg" ) {
           newItem = $("<div>");
-          rating = response.data.rating;  
-          imgURL = response.rating; 
-          heading = $("<h6>").text("Rating: " + item[i].rating);
+           
+          stillimage = item[i].images.fixed_height_still.url;
+          movingimage = item[i].images.fixed_height.url;
+          rating = item[i].rating;
+        
           image = $("<img>"); 
-          image.attr("src", item[i].images.fixed_height.url);
+          image.attr('src', stillimage);	
+          image.attr('data-still', stillimage);
+					image.attr('data-state', 'still');	
+          image.attr('data-animate', movingimage);
+          
+          heading = $("<div>").text("Rating: " + rating);
+          heading.addClass("heading")
+           
           newItem.append(image);
-          newItem.append(heading); 
-          image.attr("src", imgURL);
+          newItem.append(heading);
+          newItem.addClass("new-item")
+
+        
+          image.addClass("animate");
           newItem.append(image);  
           pulled.append(newItem);
          }
       };
     });
   };
+
+  $(document).on('click', '.animate', function(){
+    datastate = $(this).attr('data-state');
+
+    switch(datastate) {
+      case "still":
+      $(this).attr('src', $(this).data('animate'));
+      $(this).attr('data-state', 'animate');
+        break;
+      case "animate":
+      $(this).attr('src', $(this).data('still'));
+      $(this).attr('data-state', 'still');
+        break;
+      
+    }
+
+  });
   
-  /*TODO: Clear Out Form-Input */
+ 
   $("#submit").on("click", function (event) {
     event.preventDefault();
     var newInput = $("#form-input").val().trim();
+
+    if (newInput.length > 2) {
     dancingthings.push(newInput);
+    $("#form-input").val("");
     makeButtons();
-   
+    }
   });
   
   
