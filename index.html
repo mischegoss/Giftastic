@@ -1,75 +1,69 @@
-
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <title>GifTastic</title>
-  
- 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-      crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
-    
-  </head>
-  
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>GifTastic</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+
+</head>
+
+<body>
 
   <a name="page-top"></a>
 
-  <div class ="top">
+  <div class="top">
     <h1 class="text-center">Dance-o-Matic</h1>
-    <h4 class="text-center">Click on a button to start the fun</h4>
-    <h6 class="text-center">Then click on a Gif to make it dance</h6>
+    <h3 class="text-center">Click on a button to start the fun</h3>
+    <h4 class="text-center">Then click on a Gif to make it dance</h4>
 
-<!--Buttons-->
-    <div class ="text-center">
-    <div id="button-row"></div>
-</div>
+    <!--Buttons-->
+    <div class="text-center">
+      <div id="button-row"></div>
+    </div>
 
-<!-- This is container to the form and button-->
-<div class ="text-center">
+    <!-- This is container to the form and button-->
+    <div class="text-center">
 
-<!--This is the form-->   
+      <!--This is the form-->
 
-<form id = "button-form">
-    
-    <label id= "add" for="form-input">Or make a new button below</label>
-    <br>
-    <input type="text" id="form-input" placeholder ="Enter here">
-    <br>
-    <small class="form-text ">Click on your new button to see the results.</small>
-</form>
+      <form id="button-form">
 
-<!--This  is the button-->
-  <button type="submit" id="submit" class ="top-button">Submit</button>
-</div> 
-</div>
-<!--This is the container for the pulled  GIFs-->
+        <label id="add" for="form-input">Or make a new button below</label>
+        <br>
+        <input type="text" id="form-input" placeholder="Enter here">
+        <br>
+        <small class="form-text ">Click on your new button to see the results.</small>
+      </form>
 
-  <div class ="flex-container  hide" id="pulled-container"></div>
+      <!--This  is the button-->
+      <button type="submit" id="submit" class="top-button">Submit</button>
+    </div>
+  </div>
+  <!--This is the container for the pulled  GIFs-->
+
+  <div class="flex-container  hide" id="pulled-container"></div>
 
   <!--This is the link to send you to the top  of the page-->
 
   <footer class="footer">
-      <a href="#page-top" id="bottom-link">Back to top of page</a>
+    <a href="#page-top" id="bottom-link">Back to top of page</a>
   </footer>
 
+  <!-- JAVASCRIPT -->
 
-<!-- JAVASCRIPT -->
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-       crossorigin="anonymous"></script>
-  
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/javascript.js"></script>
-   
-  </body>
-  
-  </html>
-  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/javascript/javascript.js"></script>
+
+</body>
+
+</html>

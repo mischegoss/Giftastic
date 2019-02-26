@@ -1,12 +1,14 @@
-/*TO DO: Style project */ 
-
+/*Universal styling and background wallpaper */
 * {
-  color: #41354D;
-  
+  color: #41354d;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
 }
 body {
   background-image: url(../images/retro.jpg);
 }
+
+/* Creates flex container for gifs */
 .flex-container {
   display: flex;
   justify-content: center;
@@ -15,35 +17,38 @@ body {
   margin: 0 auto;
   padding: 2em;
   background-image: url(../images/retro2.jpg);
-  
 }
 
+/*Styling for Gif boxes */
 .new-item {
-  background-color: #DE7E44;
-  border: 5px solid #DE7E44;
+  background-color: #de7e44;
+  border: 3px solid #de7e44;
   margin-bottom: 2em;
   margin-right: 1em;
 }
 
+.animate {
+  max-width: 70vw;
+}
+
+/* Adds color to button */
 .top-button {
   background-color: #5d9b84;
   padding: 1em;
 }
 
+/* Changes default background color behind form */
 #form-input {
   background-color: beige;
+  font-weight: normal;
 }
 
+/*Adds a bit of padding around top of page */
 .top {
-  
   padding: 2em;
-  
 }
 
-.hide {
-  display: none;
-}
-
+/* Fixed footer */
 .footer {
   position: fixed;
   left: 0;
@@ -54,9 +59,12 @@ body {
 }
 
 #bottom-link {
-  color:  #41354D;
+  color: #41354d;
 }
 
-.animate {
-  max-width: 70vw;
+/* Sets hide used in JS */
+
+.hide {
+  display: none;
 }
+
