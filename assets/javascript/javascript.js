@@ -114,8 +114,11 @@ $( document ).ready(function() {
   $("#submit").on("click", function (event) {
     event.preventDefault();
     var newInput = $("#form-input").val().trim();
+    var checkInput = dancingthings.includes(newInput)
 
-    if (newInput.length > 2) {
+    if (checkInput) {
+      $("#form-input").val("");
+    } else if (newInput.length > 2 &&  !checkInput) {
     dancingthings.push(newInput);
     $("#form-input").val("");
     makeButtons();
